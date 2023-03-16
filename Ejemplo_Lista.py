@@ -9,6 +9,7 @@ def reducir_lista(lista):
       maximo = n
   set_l.discard(maximo)
   lista_reducida = list(set_l)
+  lista_reducida.sort()
   return lista_reducida
 
 

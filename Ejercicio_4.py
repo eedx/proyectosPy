@@ -1,5 +1,5 @@
 def contar_primos(numero):
-    rango = range(1, numero)
+    rango = range(1, numero+1)
     primos = []
 
     for N in rango:
@@ -9,6 +9,7 @@ def contar_primos(numero):
                 divisor.append(n)
         if len(divisor) <= 2:
             primos.append(N)
-    print(primos)
+    print(f'\nLos números primos desde el 0 hasta tu valor son:\n{primos}')
 
-contar_primos(21)
+valor = int(input('Ingresa un número: '))
+contar_primos(valor)

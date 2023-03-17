@@ -1,5 +1,5 @@
 from random import choice
-'''
+
 lista_palabras = {'ahorcado':'--------',
                   'jugador':'-------',
                   'pelicula':'--------',
@@ -7,14 +7,19 @@ lista_palabras = {'ahorcado':'--------',
                   'paralelismo':'-----------'}
 '''
 lista_palabras = ['ahorcado', 'jugador', 'pelicula', 'interesante', 'paralelismo']
-
+'''
 # 1. El sistema debe escoger una palabra (función 1)
 
 def seleccion_palabra(lista):
-    return choice(lista)
+  seleccion = choice(list(lista.keys()))
+  guiones = lista.values()
+  
+  return seleccion, guiones
 
 palabra = seleccion_palabra(lista_palabras)
 print(palabra)
+# 1.1. Se deberán mostrar guiones en lugar de las letras
+
 
 # 2. El usuario escogerá una letra tras otra
 

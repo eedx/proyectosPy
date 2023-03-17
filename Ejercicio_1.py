@@ -11,6 +11,12 @@ def devolver_distintos(n1, n2, n3):
             devolver = n2
         else:
             devolver = n3
+        
+        # Todo lo que está dentro del else se puede reemplazar por:
+        # lista = [n1, n2, n3]
+        # lista.sort()
+        # return lista[1]
+
     return devolver
 
 print(devolver_distintos(3, 6, 4))

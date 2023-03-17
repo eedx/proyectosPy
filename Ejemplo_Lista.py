@@ -22,6 +22,20 @@ def promedio(lista):
   avg = suma / i
   return avg
 
+'''
+Otra manera de resolverlo:
+
+def reducir_lista(lista):
+    lista = list(set(lista))
+    lista.sort()
+    lista.pop(-1)
+    return lista
+ 
+def promedio(lista):
+    valor_medio = sum(lista)/len(lista)
+    return valor_medio
+'''
+
 
 lista_numeros = [8, 7, 1, 2, 2, 3, 4, 515, 5, 5, 5, 6]
 print(reducir_lista(lista_numeros))

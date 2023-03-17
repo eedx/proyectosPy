@@ -27,4 +27,4 @@ def repetido_cero(*args):
     return False
 '''
 
-print(repetido_cero(6,0,5,1,0,3,0,1))
+print(repetido_cero(6,0,0,5,1,0,3,0,1))

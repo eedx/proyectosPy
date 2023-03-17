@@ -12,7 +12,7 @@ lista_palabras = ['ahorcado', 'jugador', 'pelicula', 'interesante', 'paralelismo
 
 def seleccion_palabra(lista):
   seleccion = choice(list(lista.keys()))
-  guiones = lista.values()
+  guiones = lista[seleccion]
   
   return seleccion, guiones
 

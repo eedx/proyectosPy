@@ -5,52 +5,54 @@ lista_palabras = {'ahorcado':'________',
                   'pelicula':'________',
                   'interesante':'___________',
                   'paralelismo':'___________'}
-'''
-lista_palabras = ['ahorcado', 'jugador', 'pelicula', 'interesante', 'paralelismo']
-'''
-# 1. El sistema debe escoger una palabra (función 1) ✔
-# 1.1. Se deberán mostrar guiones en lugar de las letras ✔
 
+
+# 1. El sistema debe escoger una palabra de una lista ✔
 def seleccion_palabra(diccionario):
   seleccion = choice(list(diccionario.keys()))
   guiones = diccionario[seleccion]
   
   return seleccion, guiones
 
+# 1.1. Se deberán mostrar guiones en lugar de las letras ✔
 palabra, guion = seleccion_palabra(lista_palabras)
-print(guion)
+print(f'\n{list(guion)}')
 
-# 2. El usuario escogerá una letra tras otra ✔
-
+# 2. La función principal deberá recibir ingresos del usuario y comprobar si gana o pierde ✔
 def intento_jugador(seleccion, guiones):
   vidas = 4
-  i = 0
-  while vidas > 0:  
-    intento = input('Ingresa una letra: ').lower()
+  seleccion_l = list(seleccion)
+  guion_l = list(guiones)
+  # 2.1. El usuario escogerá una letra tras otra (mientras tenga vidas) ✔
+  while vidas >= 0:  
+    i = 0   
+    intento = input('\nIngresa una letra: ').lower()
+    
+    # 3. El sistema verificará si la letra se encuentra en la palabra ✔
     if intento in seleccion:
-      for letra in seleccion:
+      # 3.1. Si es correcto, se mostrará su lugar en vez de un guión ✔
+      for letra in seleccion_l:
         if intento == letra:
-          acierto = guiones.replace(guiones[i], intento)
-          print(acierto)
-          print(letra)
-          print(guiones[i])
-        i += 1
+          guion_l[i] = guion_l[i].replace('_', intento)
+        i += 1  
+      print(guion_l)
+
+    # 3.2. Si la letra no se encuentra en la palabra, perderá una vida ✔
     else:
       vidas -= 1
+      # 3.2.1. Si todas las vidas se acaban y el usuario no ha adivinado, pierde ✔
       if vidas == 0:
-        print(f'Has perdido, la palabra era: {seleccion}')
-        break
+        perdedor = f'\nHas perdido, la palabra era: {seleccion.capitalize()}'
+        return perdedor
       else:
-        print(f'Perdiste una vida, te quedan: {vidas}')
+        print(f'\nPerdiste una vida, te quedan: {vidas}')
+        print(guion_l)
 
+    # 4. Si el usuario adivina todas las letras primero, gana ✔
+    if guion_l == seleccion_l:
+      ganador = f'\nFelicidades, has ganado adivinando la palabra:\n{seleccion.capitalize()}'
+      return ganador
+
+  # 5. El sistema verifica si el usuario gana o pierde y devuelve el mensaje correspondiente ✔
 
 print(intento_jugador(palabra, guion))
-  
-
-# 3. El sistema verificará si la letra se encuentra en la palabra
-# 3.1. Si la letra se encuentra en la palabra, se mostrará su lugar
-# 3.1.1. Si el usuario adivina todas las letras primero, gana
-# 3.2. Si la letra no se encuentra en la palabra, perderá una vida ✔
-# 3.2.1. Si las vidas se acaban y el usuario no ha adivinado, pierde
-
-# 4. El sistema verifica si el usuario gana o pierde y devuelve un mensaje

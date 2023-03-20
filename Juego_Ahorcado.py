@@ -27,7 +27,9 @@ def intento_jugador(seleccion, guiones):
   while vidas >= 0:  
     i = 0   
     intento = input('\nIngresa una letra: ').lower()
-    
+    abecedario = 'abcdefghijklmnñopqrstuvwxyz'
+    while intento not in abecedario or len(intento) > 1:
+      intento = input('\nIngresa una letra válida: ').lower()
     # 3. El sistema verificará si la letra se encuentra en la palabra ✔
     if intento in seleccion:
       # 3.1. Si es correcto, se mostrará su lugar en vez de un guión ✔

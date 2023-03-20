@@ -16,7 +16,7 @@ def seleccion_palabra(diccionario):
 
 # 1.1. Se deberán mostrar guiones en lugar de las letras ✔
 palabra, guion = seleccion_palabra(lista_palabras)
-print(f'\n{list(guion)}')
+print(f'\n{" ".join(list(guion))}')
 
 # 2. La función principal deberá recibir ingresos del usuario y comprobar si gana o pierde ✔
 def intento_jugador(seleccion, guiones):
@@ -30,6 +30,7 @@ def intento_jugador(seleccion, guiones):
     abecedario = 'abcdefghijklmnñopqrstuvwxyz'
     while intento not in abecedario or len(intento) > 1:
       intento = input('\nIngresa una letra válida: ').lower()
+    
     # 3. El sistema verificará si la letra se encuentra en la palabra ✔
     if intento in seleccion:
       # 3.1. Si es correcto, se mostrará su lugar en vez de un guión ✔
@@ -37,7 +38,7 @@ def intento_jugador(seleccion, guiones):
         if intento == letra:
           guion_l[i] = guion_l[i].replace('_', intento)
         i += 1  
-      print(guion_l)
+      print(' '.join(guion_l))
 
     # 3.2. Si la letra no se encuentra en la palabra, perderá una vida ✔
     else:
@@ -48,7 +49,7 @@ def intento_jugador(seleccion, guiones):
         return perdedor
       else:
         print(f'\nPerdiste una vida, te quedan: {vidas}')
-        print(guion_l)
+        print(' '.join(guion_l))
 
     # 4. Si el usuario adivina todas las letras primero, gana ✔
     if guion_l == seleccion_l:

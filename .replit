@@ -1,4 +1,4 @@
-run = "python3 Juego_Ahorcado.py"
+run = "python3 Recetario.py"
 
 # The primary language of the repl. There can be others, though!
 language = "python3"

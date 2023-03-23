@@ -1,9 +1,11 @@
 from os import system
 from pathlib import Path
+import os
 
 carpeta = Path(Path.home(), 'Recetas')
+abecedario = 'abcdefghijklmnñopqrstuvwxyz'
 
-# ANTES DE PASAR A VSCODE CAMBIAR
+# ANTES DE PASAR A VSCODE CAMBIAR BIENVENIDA()
 # system('clear') por system('cls')
 
 def bienvenida():
@@ -28,29 +30,75 @@ def sel_usuario():
     6. Finalizar programa
     ''')
     eleccion = input('Por favor selecciona una opción para continuar: ')
-    abecedario = 'abcdefghijklmnñopqrstuvwxyz'
     opciones = ['1', '2', '3', '4', '5', '6']
     while eleccion not in opciones or eleccion in abecedario:
         eleccion = input('Por favor selecciona una opción válida: ')
     return eleccion
 
-def elegir_cat():
-  cat_selec = input('Por favor selecciona una categoría: ')
-  abecedario = 'abcdefghijklmnñopqrstuvwxyz'
-  opciones = ['1', '2', '3', '4', '5', '6']
-  conteo = 0
-  categorias = []
-  # for root, dirs, files in os.walk(Path(carpeta)):
-  for cat in Path(carpeta).glob('*'):
-    conteo += 1
-    categorias.append(cat)
-  categorias.sort()
-  while cat_selec not in opciones or cat_selec in abecedario:
-    cat_selec = input('Por favor selecciona una opción válida: ')
-  cat_selec = int(cat_selec)
-  return categorias, cat_selec
+def buscar_cat():
+    directorios = []
+    categorias = []
+    for cat in Path(carpeta).glob('*'):
+        directorios.append(cat)
+        categorias.append(os.path.basename(cat))
+    categorias.sort()
+    directorios.sort()
+    
+    return categorias
 
+def elegir_cat(lista_categorias):
+    num = 1
+    opciones = []
+    print('\nLas categorías encontradas son las siguientes:\n')
+    for c in lista_categorias:
+        print(f'{num}. {c}')
+        opciones.append(str(num))
+        num += 1
+    eleccion = input('\nSeleccione una para continuar: ')
+    while eleccion not in opciones or eleccion in abecedario:
+        eleccion = input('Por favor selecciona una opción válida: ')
+    eleccion = int(eleccion)-1
 
+    cat = lista_categorias[eleccion]
+    ubicacion = Path(carpeta, cat)
+    return cat, ubicacion
+    
+def buscar_receta(ubicacion):
+    directorios = []
+    recetas = []
+    for txt in Path(ubicacion).glob('*.txt'):
+        directorios.append(txt)
+        recetas.append(Path(txt))
+    directorios.sort()
+    recetas.sort()
+    return recetas
+
+def elegir_receta(lista_recetas):
+    num = 1
+    opciones = []
+    print('\nLas recetas encontradas son las siguientes:\n')
+    for r in lista_recetas:
+        print(f'{num}. {r.stem}')
+        opciones.append(str(num))
+        num += 1
+    eleccion = input('\nSeleccione una para continuar: ')
+    while eleccion not in opciones or eleccion in abecedario:
+        eleccion = input('Por favor selecciona una opción válida: ')
+    eleccion = int(eleccion)-1
+
+    rec = lista_recetas[eleccion]
+    ubicacion = Path(carpeta, rec)
+    return ubicacion
+
+def leer_receta(ubicacion_receta):
+    archivo = open(ubicacion_receta)
+    print(f'\n{archivo.read()}\n')
+    archivo.close()
 
 bienvenida()
-sel_usuario()
+#sel_usuario()
+categorias = buscar_cat()
+cat_elegida, directorio = elegir_cat(categorias)
+recetas = buscar_receta(directorio)
+receta_dir = elegir_receta(recetas)
+leer_receta(receta_dir)

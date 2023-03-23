@@ -95,29 +95,61 @@ def leer_receta(ubicacion_receta):
     print(f'\n{archivo.read()}\n')
     archivo.close()
 
-bienvenida()
-'''eleccion_usuario = sel_usuario()
-match eleccion_usuario:
-    case '1':
-        #Leer receta
-        categorias = buscar_cat()
-        cat_elegida, directorio = elegir_cat(categorias)
-        recetas = buscar_receta(directorio)
-        receta_dir = elegir_receta(recetas)
-        leer_receta(receta_dir)
-    case '2':
-        #Crear receta
-    case '3':
-        #Crear categoría
-    case '4':
-        #Eliminar receta
-    case '5':
-        #Eliminar categoría
-    case '6':
-        #Finalizar programa'''
+def menu():
+    eleccion = ''
+    volver = input('\n¿Deseas volver al menú principal (s/n)? ').lower()
+    while volver != 's' and volver != 'n':
+        volver = input('\n¿Deseas volver al menú principal (s/n)? ').lower()
+    match volver:
+        case 's':
+            system('clear')
+        case 'n':
+            system('clear')
+            eleccion = '6'
+            print('\nPrograma finalizado\n')
+    return eleccion
 
+bienvenida()
+eleccion_usuario = 'a'
+while eleccion_usuario != '6':
+
+    eleccion_usuario = sel_usuario()
+    match eleccion_usuario:
+        case '1':
+            print('Leer recetas')
+            #Leer receta
+            #categorias = buscar_cat()
+            #cat_elegida, directorio = elegir_cat(categorias)
+            #recetas = buscar_receta(directorio)
+            #receta_dir = elegir_receta(recetas)
+            #leer_receta(receta_dir)
+            eleccion_usuario = menu()
+        case '2':
+            print('Crear receta')
+            #Crear receta
+            eleccion_usuario = menu()
+        case '3':
+            print('Crear categoría')
+            #Crear categoría
+            eleccion_usuario = menu()
+        case '4':
+            print('Eliminar receta')
+            #Eliminar receta
+            eleccion_usuario = menu()
+        case '5':
+            print('Eliminar categoría')
+            #Eliminar categoría
+            eleccion_usuario = menu()
+        case '6':
+            #Finalizar programa
+            print('\nPrograma finalizado\n')
+            
+    
+'''
+bienvenida()
 categorias = buscar_cat()
 cat_elegida, directorio = elegir_cat(categorias)
 recetas = buscar_receta(directorio)
 receta_dir = elegir_receta(recetas)
 leer_receta(receta_dir)
+'''

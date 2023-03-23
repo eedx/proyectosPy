@@ -34,5 +34,23 @@ def sel_usuario():
         eleccion = input('Por favor selecciona una opción válida: ')
     return eleccion
 
+def elegir_cat():
+  cat_selec = input('Por favor selecciona una categoría: ')
+  abecedario = 'abcdefghijklmnñopqrstuvwxyz'
+  opciones = ['1', '2', '3', '4', '5', '6']
+  conteo = 0
+  categorias = []
+  # for root, dirs, files in os.walk(Path(carpeta)):
+  for cat in Path(carpeta).glob('*'):
+    conteo += 1
+    categorias.append(cat)
+  categorias.sort()
+  while cat_selec not in opciones or cat_selec in abecedario:
+    cat_selec = input('Por favor selecciona una opción válida: ')
+  cat_selec = int(cat_selec)
+  return categorias, cat_selec
+
+
+
 bienvenida()
 sel_usuario()

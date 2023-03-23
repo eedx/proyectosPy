@@ -96,7 +96,21 @@ def leer_receta(ubicacion_receta):
     archivo.close()
 
 bienvenida()
-#sel_usuario()
+'''eleccion_usuario = sel_usuario()
+match eleccion_usuario:
+    case '1':
+        #Leer receta
+    case '2':
+        #Crear receta
+    case '3':
+        #Crear categoría
+    case '4':
+        #Eliminar receta
+    case '5':
+        #Eliminar categoría
+    case '6':
+        #Finalizar programa'''
+
 categorias = buscar_cat()
 cat_elegida, directorio = elegir_cat(categorias)
 recetas = buscar_receta(directorio)

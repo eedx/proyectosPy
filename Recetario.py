@@ -100,6 +100,11 @@ bienvenida()
 match eleccion_usuario:
     case '1':
         #Leer receta
+        categorias = buscar_cat()
+        cat_elegida, directorio = elegir_cat(categorias)
+        recetas = buscar_receta(directorio)
+        receta_dir = elegir_receta(recetas)
+        leer_receta(receta_dir)
     case '2':
         #Crear receta
     case '3':

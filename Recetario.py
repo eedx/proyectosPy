@@ -95,6 +95,28 @@ def leer_receta(ubicacion_receta):
     print(f'\n{archivo.read()}\n')
     archivo.close()
 
+def crear_receta():
+	  #Esta función crea recetas dada su ubicación (categoría)
+		#print(nombre)
+		
+		nombre = input('Ingresa el nombre de la receta: ')
+		nombre = nombre + '.txt'
+		archivo = open(Path(carpeta / nombre), 'x')
+		return nombre
+
+print(crear_receta())
+def crear_cat():
+    # Esta función crea categorías (carpetas) en la ubicación carpeta
+    print(1)
+
+def eliminar_receta(ruta_archivo):
+    # Esta función elimina recetas (archivos) dada su ruta
+    print(2)
+
+def eliminar_cat(ruta_cat):
+    # Esta función elimina categorías (carpetas) dada su ubicación
+    print(3)
+
 def menu():
     eleccion = ''
     volver = input('\n¿Deseas volver al menú principal (s/n)? ').lower()
@@ -109,9 +131,9 @@ def menu():
             print('\nPrograma finalizado\n')
     return eleccion
 
-bienvenida()
-eleccion_usuario = 'a'
-while eleccion_usuario != '6':
+#bienvenida()
+#eleccion_usuario = 'a'
+'''while eleccion_usuario != '6':
 
     eleccion_usuario = sel_usuario()
     match eleccion_usuario:
@@ -145,6 +167,7 @@ while eleccion_usuario != '6':
             print('\nPrograma finalizado\n')
             
     
+'''
 '''
 bienvenida()
 categorias = buscar_cat()
